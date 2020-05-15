@@ -1,0 +1,4 @@
+name = "makeAirfoil"
+uuid = "e67f8722-8940-478f-95ae-be8f1b226cb6"
+authors = ["Mark C. Anderson <anderson.mark.az@gmail.com>"]
+version = "0.1.0"
