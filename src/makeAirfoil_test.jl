@@ -2,4 +2,4 @@ Pkg.add(PackageSpec(path="/Users/markanderson/Box/FLOW-MCA/FLOW-Code/Repositorie
 
 import makeAirfoil.naca
 
-airfoil = makeAirfoil.naca(2,4,12)
+airfoil = naca(2,4,12)
