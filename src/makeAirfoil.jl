@@ -76,13 +76,13 @@ module makeAirfoil
         # Creating the .csv file
         touch(totalPath)
 
-        # reading the .csv file
+        cl, cdd, cdp, cm, converged = Xfoil.xfoilsweep(airfoil[:,1],airfoil[:,2],angleRange,reynoldsNumber)
+        println(cl)
+
+        # Writing to the .csv file
         data = transpose([transpose(angleRange);transpose(angleRange)])
         data = Tables.table(data)
-
         CSV.write(totalPath,data)
-
-
 
     end # tabulateData
 
