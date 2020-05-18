@@ -64,9 +64,11 @@ module makeAirfoil
 
     end # naca
 
-    function tabulateData(airfoil,angleOfAttack,reynoldsNumber = 100000)
+    function tabulateData(airfoil,angleOfAttack,path,airfoilName = "unknownAirfoil",reynoldsNumber = 100000)
 
-        
+        touch(path,"/",airfoilName,"_",string(reynoldsNumber),".xlsx")
+
+        #XLSX.openxlsx
 
     end # tabulateData
 
