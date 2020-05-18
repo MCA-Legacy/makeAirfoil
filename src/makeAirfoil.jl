@@ -97,8 +97,8 @@ module makeAirfoil
         end
 
         # Writing to the .csv file
-        data = Tables.table(data)
-        CSV.write(totalPath,data)
+        dataWithHeaders = Tables.table(dataWithHeaders)
+        CSV.write(totalPath,dataWithHeaders)
 
     end # tabulateData
 
