@@ -85,20 +85,20 @@ module makeAirfoil
         # Organizing the data in preparation for storage in file
         headers = ["angle","cl","cdd","cdp","cm","converged"]
         data = transpose([transpose(angleRange);transpose(cl);transpose(cdd);transpose(cdp);transpose(cm);transpose(converged)])
-        dataWithHeaders = Matrix(undef,length(angleRange) + 1,6)
-        for i = 1:length(angleRange) + 1
+        # dataWithHeaders = Matrix(undef,length(angleRange) + 1,6)
+        # for i = 1:length(angleRange) + 1
 
-            if i == 1
-                dataWithHeaders[i,:] = headers
-            else
-                dataWithHeaders[i,:] = data[i-1,:]
-            end
+        #     if i == 1
+        #         dataWithHeaders[i,:] = headers
+        #     else
+        #         dataWithHeaders[i,:] = data[i-1,:]
+        #     end
 
-        end
+        # end
 
         # Writing to the .csv file
-        dataWithHeaders = Tables.table(dataWithHeaders)
-        CSV.write(totalPath,dataWithHeaders)
+        data = Tables.table(data)
+        CSV.write(totalPath,data,header = headers)
 
     end # tabulateData
 
