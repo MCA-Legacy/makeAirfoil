@@ -5,4 +5,6 @@ import makeAirfoil.tabulateData
 
 airfoil = naca(2,4,12,0.03)
 
-tabulateData(airfoil,100000)
+angleOfAttack = 4*pi/180
+
+tabulateData(airfoil,angleOfAttack,100000)

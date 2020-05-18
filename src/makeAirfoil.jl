@@ -2,7 +2,9 @@ module makeAirfoil
 
     using Pkg
     Pkg.add("XLSX")
+    Pkg.add(PackageSpec(url="https://github.com/byuflowlab/Xfoil.jl"))
     import XLSX
+    import Xfoil
     include("thickness.jl");
     include("camber.jl");
 
@@ -62,9 +64,9 @@ module makeAirfoil
 
     end # naca
 
-    function tabulateData(airfoil,reynoldsNumber)
+    function tabulateData(airfoil,angleOfAttack,reynoldsNumber = 100000)
 
-        println("Tabulating airfoil data")
+        
 
     end # tabulateData
 
