@@ -66,7 +66,7 @@ module makeAirfoil
 
     function tabulateData(airfoil,angleOfAttack,path,airfoilName = "unknownAirfoil",reynoldsNumber = 100000)
 
-        touch(path,"/",airfoilName,"_",string(reynoldsNumber),".xlsx")
+        touch(string(path,"/",airfoilName,"_",string(reynoldsNumber),".xlsx"))
 
         #XLSX.openxlsx
 
