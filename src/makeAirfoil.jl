@@ -64,7 +64,7 @@ module makeAirfoil
 
     function tabulateData(airfoil,reynoldsNumber)
 
-
+        println("Tabulating airfoil data")
 
     end # tabulateData
 

@@ -5,3 +5,4 @@ import makeAirfoil.tabulateData
 
 airfoil = naca(2,4,12,0.03)
 
+tabulateData(airfoil,100000)
