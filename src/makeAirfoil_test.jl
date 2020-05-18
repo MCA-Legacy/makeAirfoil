@@ -9,6 +9,6 @@ angleOfAttack = 4*pi/180
 
 path = string(homedir(),"/Box/FLOW-MCA/FLOW-Code/Repositories/personal-projects/NonlinearLiftingLine/src/airfoil-data")
 airfoilName = "NACA2412"
-reynoldsNumber = 100000
+reynoldsNumber = 200000
 
 tabulateData(airfoil,angleOfAttack,path,airfoilName,reynoldsNumber)
