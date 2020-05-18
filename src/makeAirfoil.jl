@@ -77,10 +77,8 @@ module makeAirfoil
         touch(totalPath)
 
         # reading the .csv file
-        println(transpose([transpose(angleRange);transpose(angleRange)]))
         data = transpose([transpose(angleRange);transpose(angleRange)])
         data = Tables.table(data)
-        println(data)
 
         CSV.write(totalPath,data)
 
