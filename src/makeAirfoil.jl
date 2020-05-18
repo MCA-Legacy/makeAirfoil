@@ -3,8 +3,10 @@ module makeAirfoil
     using Pkg
     Pkg.add("CSV")
     Pkg.add(PackageSpec(url="https://github.com/byuflowlab/Xfoil.jl"))
+    Pkg.add("Tables")
     using CSV
     import Xfoil
+    using Tables
     include("thickness.jl");
     include("camber.jl");
 
@@ -64,15 +66,22 @@ module makeAirfoil
 
     end # naca
 
-    function tabulateData(airfoil,angleOfAttack,path,airfoilName = "unknownAirfoil",reynoldsNumber = 100000)
+    function tabulateData(airfoil,angleRange,path,airfoilName = "unknownAirfoil",reynoldsNumber = 100000)
 
         totalPath = string(path,"/",airfoilName,"_",string(reynoldsNumber),".csv")
 
+        # Printing out the directory where the data are saved
         println(totalPath)
 
+        # Creating the .csv file
         touch(totalPath)
 
-        CSV.File(totalPath)
+        # reading the .csv file
+        data = [angleRange[:],angleRange[:]]
+
+        CSV.write(totalPath,data)
+
+
 
     end # tabulateData
 

@@ -5,10 +5,10 @@ import makeAirfoil.tabulateData
 
 airfoil = naca(2,4,12,0.03)
 
-angleOfAttack = 4*pi/180
+angleRange = -10:0.5:10
 
 path = string(homedir(),"/Box/FLOW-MCA/FLOW-Code/Repositories/personal-projects/NonlinearLiftingLine/src/airfoil-data")
 airfoilName = "NACA2412"
 reynoldsNumber = 200000
 
-tabulateData(airfoil,angleOfAttack,path,airfoilName,reynoldsNumber)
+tabulateData(airfoil,angleRange,path,airfoilName,reynoldsNumber)
