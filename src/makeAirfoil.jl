@@ -70,17 +70,19 @@ module makeAirfoil
 
         totalPath = string(path,"/",airfoilName,"_",string(reynoldsNumber),".csv")
 
+        println("Calculating data...")
+
         # Printing out the directory where the data are saved
+        println("Data will be stored to:")
         println(totalPath)
 
         # Creating the .csv file
         touch(totalPath)
 
         cl, cdd, cdp, cm, converged = Xfoil.xfoilsweep(airfoil[:,1],airfoil[:,2],angleRange,reynoldsNumber)
-        println(cl)
 
         # Writing to the .csv file
-        data = transpose([transpose(angleRange);transpose(angleRange)])
+        data = transpose([transpose(angleRange);transpose(cl);transpose(cdd);transpose(cdp);transpose(cm);transpose(converged)])
         data = Tables.table(data)
         CSV.write(totalPath,data)
 
