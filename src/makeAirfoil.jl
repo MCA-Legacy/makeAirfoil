@@ -3,7 +3,7 @@ module makeAirfoil
     using Pkg
     Pkg.add("CSV")
     Pkg.add(PackageSpec(url="https://github.com/byuflowlab/Xfoil.jl"))
-    import CSV
+    using CSV
     import Xfoil
     include("thickness.jl");
     include("camber.jl");
@@ -70,11 +70,9 @@ module makeAirfoil
 
         println(totalPath)
 
+        touch(totalPath)
+
         CSV.File(totalPath)
-
-        # touch(totalPath)
-
-        #XLSX.openxlsx
 
     end # tabulateData
 
