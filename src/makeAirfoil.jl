@@ -1,5 +1,8 @@
 module makeAirfoil
 
+    using Pkg
+    Pkg.add("XLSX")
+    import XLSX
     include("thickness.jl");
     include("camber.jl");
 
@@ -58,5 +61,11 @@ module makeAirfoil
         return coordinates
 
     end # naca
+
+    function tabulateData(airfoil,reynoldsNumber)
+
+
+
+    end # tabulateData
 
 end # module
