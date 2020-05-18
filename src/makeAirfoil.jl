@@ -66,7 +66,7 @@ module makeAirfoil
 
     function tabulateData(airfoil,angleOfAttack,path,airfoilName = "unknownAirfoil",reynoldsNumber = 100000)
 
-        totalPath = string(path,"/",airfoilName,"_",string(reynoldsNumber),".xlsx")
+        totalPath = string(path,"/",airfoilName,"_",string(reynoldsNumber),".csv")
 
         println(totalPath)
 
