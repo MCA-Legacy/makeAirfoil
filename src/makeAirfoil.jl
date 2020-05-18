@@ -85,7 +85,7 @@ module makeAirfoil
         # Organizing the data in preparation for storage in file
         headers = ["angle","cl","cdd","cdp","cm","converged"]
         data = transpose([transpose(angleRange);transpose(cl);transpose(cdd);transpose(cdp);transpose(cm);transpose(converged)])
-        dataWithHeaders = zeros(length(angleRange) + 1,6)
+        dataWithHeaders = Matrix(undef,length(angleRange) + 1,6)
         for i = 1:length(angleRange) + 1
 
             if i == 1
