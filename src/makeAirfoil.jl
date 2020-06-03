@@ -68,7 +68,7 @@ module makeAirfoil
 
     function tabulateData(airfoil,angleRange,path,airfoilName = "unknownAirfoil")
 
-        reynoldsNumberRange = 1e5:1e5:1e6
+        reynoldsNumberRange = 1e5:1e5:4e5
 
         totalPath = string(path,"/",airfoilName,".csv")
 
@@ -82,17 +82,25 @@ module makeAirfoil
         touch(totalPath)
 
         # Performing the analysis
-        data = zeros(length(angleRange), length(reynoldsNumberRange))
+        data = zeros(length(angleRange) + 1, length(reynoldsNumberRange) + 1)
+        data[2:end,1] = angleRange
+        data[1,2:end] = reynoldsNumberRange
         reynoldsNumber = reynoldsNumberRange[1]
-        cl, cdd, cdp, cm, converged = Xfoil.xfoilsweep(airfoil[:,1],airfoil[:,2],angleRange,reynoldsNumber)
+
+        for i = 1:length(reynoldsNumberRange)
+            reynoldsNumber = reynoldsNumberRange[i]
+            println("Calculating data for Re: ", reynoldsNumber)
+            cl, cdd, cdp, cm, converged = Xfoil.xfoilsweep(airfoil[:,1],airfoil[:,2],angleRange,reynoldsNumber)
+            data[2:end,i+1] = cl
+        end
 
         # Organizing the data in preparation for storage in file
-        headers = ["angle","cl","cdd","cdp","cm","converged"]
-        data = transpose([transpose(angleRange);transpose(cl);transpose(cdd);transpose(cdp);transpose(cm);transpose(converged)])
+        # headers = ["angle","cl","cdd","cdp","cm","converged"]
+        # data = transpose([transpose(angleRange);transpose(cl);transpose(cdd);transpose(cdp);transpose(cm);transpose(converged)])
 
         # Writing to the .csv file
         data = Tables.table(data)
-        CSV.write(totalPath,data,header = headers)
+        CSV.write(totalPath,data)
 
     end # tabulateData
 
