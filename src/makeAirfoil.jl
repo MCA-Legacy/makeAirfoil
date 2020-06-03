@@ -23,7 +23,7 @@ module makeAirfoil
     end # makeXarray
 
     function naca(c,p,t,dphi)
-        #println("Hello World!")
+        
         c = c/100;
         p = p/10;
         t = t/100;
@@ -37,8 +37,6 @@ module makeAirfoil
             array[i,2] = camber(x[i],p,c) + thickness(t,x[i])/2;
             array[i,3] = camber(x[i],p,c) - thickness(t,x[i])/2;
         end
-
-        #return array[:,1:2]
 
         xpositions = Vector(array[:,1]);
         zu = Vector(array[:,2]);
@@ -91,10 +89,6 @@ module makeAirfoil
             cl, cdd, cdp, cm, converged = Xfoil.xfoilsweep(airfoil[:,1],airfoil[:,2],angleRange,reynoldsNumber)
             data[2:end,i+1] = cl
         end
-
-        # Organizing the data in preparation for storage in file
-        # headers = ["angle","cl","cdd","cdp","cm","converged"]
-        # data = transpose([transpose(angleRange);transpose(cl);transpose(cdd);transpose(cdp);transpose(cm);transpose(converged)])
 
         # Writing to the .csv file
         data = Tables.table(data)
