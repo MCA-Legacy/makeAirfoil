@@ -5,7 +5,7 @@ import makeAirfoil.tabulateData
 
 airfoil = naca(2,4,12,0.03)
 
-angleRange = -20:0.5:30
+angleRange = -20:0.2:30
 
 path = string(homedir(),"/Box/FLOW-MCA/FLOW-Code/Repositories/personal-projects/NonlinearLiftingLine/src/airfoil-data")
 airfoilName = "NACA2412"
