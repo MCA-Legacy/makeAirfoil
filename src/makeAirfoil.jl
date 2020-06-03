@@ -66,9 +66,11 @@ module makeAirfoil
 
     end # naca
 
-    function tabulateData(airfoil,angleRange,path,airfoilName = "unknownAirfoil",reynoldsNumber = 100000)
+    function tabulateData(airfoil,angleRange,path,airfoilName = "unknownAirfoil")
 
-        totalPath = string(path,"/",airfoilName,"_",string(reynoldsNumber),".csv")
+        reynoldsNumber = 200000
+
+        totalPath = string(path,"/",airfoilName,".csv")
 
         println("Calculating data...")
 
