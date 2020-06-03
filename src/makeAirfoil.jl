@@ -68,7 +68,7 @@ module makeAirfoil
 
     function tabulateData(airfoil,angleRange,path,airfoilName = "unknownAirfoil")
 
-        reynoldsNumber = 200000
+        reynoldsNumberRange = 1e5:1e5:1e6
 
         totalPath = string(path,"/",airfoilName,".csv")
 
@@ -82,11 +82,13 @@ module makeAirfoil
         touch(totalPath)
 
         # Performing the analysis
+        data = zeros(angleRange, reynoldsNumberRange)
+        reynoldsNumber = reynoldsNumberRange[1]
         cl, cdd, cdp, cm, converged = Xfoil.xfoilsweep(airfoil[:,1],airfoil[:,2],angleRange,reynoldsNumber)
 
         # Organizing the data in preparation for storage in file
-        headers = ["angle","cl","cdd","cdp","cm","converged"]
-        data = transpose([transpose(angleRange);transpose(cl);transpose(cdd);transpose(cdp);transpose(cm);transpose(converged)])
+        # headers = ["angle","cl","cdd","cdp","cm","converged"]
+        # data = transpose([transpose(angleRange);transpose(cl);transpose(cdd);transpose(cdp);transpose(cm);transpose(converged)])
 
         # Writing to the .csv file
         data = Tables.table(data)
