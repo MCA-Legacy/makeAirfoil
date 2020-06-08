@@ -1,11 +1,11 @@
 module makeAirfoil
 
     using Pkg
-    Pkg.add("CSV")
     Pkg.add(PackageSpec(url="https://github.com/byuflowlab/Xfoil.jl"))
+    Pkg.add("CSV")
     Pkg.add("Tables")
-    using CSV
     import Xfoil
+    using CSV
     using Tables
     include("thickness.jl");
     include("camber.jl");
@@ -50,8 +50,8 @@ module makeAirfoil
         # XFOIL wants the trailing edge first, then wrap around to the leading edge
         # and then back to the trailing edge
         # Currently, we have it:
-        # leading edge -> traling edge over the top
-        # leading edge -> traling edge over the bottom
+        # leading edge -> trailing edge over the top
+        # leading edge -> trailing edge over the bottom
         # So all we need to do is reverse the top, or the first half of the coordinates
 
         coordinates[1:length(x),1] = reverse(coordinates[1:length(x),1])
