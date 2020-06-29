@@ -1,5 +1,7 @@
 # makeAirfoil
 
+Allows you to create a NACA airfoil and analyze the lift coefficient of any airfoil.
+
 # Useful Functions
 
 ## naca()
