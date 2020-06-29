@@ -64,6 +64,51 @@ module makeAirfoil
 
     end # naca
 
+    function camber(x,p,c)
+
+        # camber(x,p,c)
+
+        # Determines the proper amount of camber.
+        
+        # x = position along the chord
+        # p = position of maximum camber
+        # c = value of maximum camber
+
+        if x <= p
+            z = c * (2*p*x - x^2)/p^2;
+        else
+            z = c * (1 - 2*p + 2*p*x -x^2)/(1-p)^2;
+        end
+    
+        # BUT... if p = 0
+        # if p == 0 && x == 0
+        #     z = 0
+        # elseif p == 0 && x == 1
+        #     z = 0
+        # end
+    
+        if p == 0
+            z = 0
+        end
+    
+        return z
+    
+    end
+
+    function thickness(m,x)
+
+        # thickness(maximum thickness,position)
+
+        # Outputs the thickness of a NACA 4-series airfoil.
+        
+        # This function the maximum thickness (as a percentage of the chord) 
+        # and the position along the chord to generate the thickness along
+        # the chord.
+
+        t = 10 * m * (0.2969*sqrt(x) - 0.1260*x - 0.3537*x^2 + 0.2843*x^3 - 0.1015x^4);
+        
+    end
+
     function tabulateData(airfoil,angleRange,reynoldsNumberRange,path,airfoilName = "unknownAirfoil")
 
         totalPath = string(path,"/",airfoilName,".csv")
