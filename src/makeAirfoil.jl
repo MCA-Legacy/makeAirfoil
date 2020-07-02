@@ -7,8 +7,6 @@ module makeAirfoil
     import Xfoil
     using CSV
     using Tables
-    include("thickness.jl");
-    include("camber.jl");
 
     function makeXarray(chord,dphi)
 
