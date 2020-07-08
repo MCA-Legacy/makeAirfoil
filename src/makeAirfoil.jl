@@ -107,7 +107,7 @@ module makeAirfoil
         
     end
 
-    function tabulateData(airfoil,angleRange,reynoldsNumberRange,path,airfoilName = "unknownAirfoil")
+    function tabulateData(airfoil,angleRange,reynoldsNumberRange,path,airfoilName)
 
         totalPath = string(path,"/",airfoilName,".csv")
 
