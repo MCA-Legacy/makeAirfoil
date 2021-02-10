@@ -1,9 +1,9 @@
 module makeAirfoil
 
-    using Pkg
-    Pkg.add(PackageSpec(url="https://github.com/byuflowlab/Xfoil.jl"))
-    Pkg.add("CSV")
-    Pkg.add("Tables")
+    #using Pkg
+    #Pkg.add(PackageSpec(url="https://github.com/byuflowlab/Xfoil.jl"))
+    #Pkg.add("CSV")
+    #Pkg.add("Tables")
     import Xfoil
     using CSV
     using Tables
